@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#000000">
-<title>my brojeck</title>
+<title>DevGit</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -18,10 +18,9 @@ body{background:#000;color:var(--ink);font:400 16px/1.55 "Familjen Grotesk",syst
 #bg{position:fixed;inset:0;width:100%;height:100%;display:block;z-index:0}
 main{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:max(28px,env(safe-area-inset-top)) 18px max(56px,env(safe-area-inset-bottom));display:grid;gap:26px}
 @media(min-width:860px){main{grid-template-columns:320px 1fr;gap:56px;padding-top:72px}.side{position:sticky;top:48px;align-self:start}}
-h1{font-weight:700;font-size:clamp(46px,12vw,78px);line-height:1;letter-spacing:-.03em;margin-bottom:22px;text-shadow:0 2px 14px #000;overflow-wrap:anywhere}
-#logo span{display:inline-block;animation:drop 1s both}
-@keyframes drop{0%{transform:translateY(-110vh);opacity:0}1%{opacity:1}55%{transform:translateY(0);animation-timing-function:ease-out}70%{transform:translateY(-16%)}84%{transform:translateY(0)}92%{transform:translateY(-4%)}100%{transform:translateY(0)}}
-.profile{background:var(--panel);padding:20px;display:grid;gap:12px}
+h1{margin-bottom:22px;line-height:0}
+#logo canvas{display:block;max-width:100%}
+.profile{background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:20px;display:grid;gap:12px}
 .ava{position:relative;width:108px;height:108px;padding:3px;border-radius:50%;background:conic-gradient(#FF3366,#FF9900,#FFCC00,#33CC66,#00CCFF,#3366FF,#CC33FF,#FF3366)}
 .av{width:100%;height:100%;display:block;border-radius:50%;border:4px solid #0d1117;background:#15131c;object-fit:cover}
 .gh{position:absolute;right:-4px;bottom:-2px;width:36px;height:36px;border-radius:50%;background:#0d1117;border:2px solid #30363d;display:grid;place-items:center;transition:transform .15s}
@@ -32,31 +31,35 @@ h1{font-weight:700;font-size:clamp(46px,12vw,78px);line-height:1;letter-spacing:
 .muted{color:var(--dim)}
 .st{display:flex;flex-wrap:wrap;gap:6px 18px}.st b{font-weight:700}
 .info{display:grid;gap:2px;font-size:.92rem;color:var(--dim)}
-.bar{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:14px;background:var(--panel);padding:12px 16px}
+.bar{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:14px;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:12px 16px}
 .bar h2{font-size:1.2rem;flex:1}
-#q{font:inherit;color:var(--ink);background:#14121b;border:2px solid #2a2735;padding:9px 12px;min-width:0;width:100%;max-width:240px;border-radius:0}
+#q{font:inherit;color:var(--ink);background:#14121b;border:2px solid #2a2735;padding:9px 12px;min-width:0;width:100%;max-width:240px;border-radius:6px}
 #q:focus{outline:none;border-color:#00CCFF}
-#list{display:grid;gap:8px;padding:0}
-.row{list-style:none;background:var(--panel);border-left:6px solid var(--c);transition:border-left-width .25s}
-.row.open{border-left-width:14px}
-.head{all:unset;box-sizing:border-box;display:grid;grid-template-columns:32px 1fr;gap:3px 14px;width:100%;padding:14px 16px;cursor:pointer}
-.head:focus-visible{outline:2px solid var(--c);outline-offset:-2px}
-.mk{grid-row:span 3;width:32px;height:32px}
-.nm{font-weight:600;font-size:1.12rem;overflow-wrap:anywhere}
-.ds{color:var(--dim);overflow-wrap:anywhere}
-.meta{display:flex;flex-wrap:wrap;gap:2px 16px;color:var(--dim);font-size:.85rem}
-.body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s}
-.open .body{grid-template-rows:1fr}
-.body>div{overflow:hidden;min-height:0}
-.in{padding:2px 16px 18px 62px;display:grid;gap:12px;justify-items:start}
-.links{display:flex;flex-wrap:wrap;gap:6px 18px}
-.links a{color:var(--ink);text-underline-offset:3px}
-.btn{display:inline-block;min-height:44px;padding:11px 18px;background:var(--c);color:#0a0a0f;font:600 .98rem "Familjen Grotesk",system-ui,sans-serif;border:0;border-radius:0;cursor:pointer;text-decoration:none;transition:transform .12s}
+#list{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:12px;padding:0}
+.card{list-style:none;display:flex;flex-direction:column;gap:10px;padding:16px;background:#0d1117;border:1px solid #30363d;border-radius:8px;transition:border-color .2s;min-width:0}
+.card:hover{border-color:var(--c)}
+.ct{display:flex;align-items:center;gap:10px;min-width:0}
+.ct .mk{width:28px;height:28px;flex:none}
+.ct a{color:#58a6ff;font-weight:600;font-size:1.05rem;text-decoration:none;overflow-wrap:anywhere;min-width:0}
+.ct a:hover,.ct a:focus-visible{text-decoration:underline}
+.tag{margin-left:auto;font-size:.75rem;color:var(--dim);border:1px solid #30363d;border-radius:99px;padding:0 8px;flex:none}
+.cd{color:var(--dim);font-size:.93rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;flex:1;min-height:1.5em}
+.cm{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.84rem;color:var(--dim);align-items:center}
+.cm i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;background:var(--lc)}
+.act{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;align-items:center}
+.card .btn{min-height:40px;padding:7px 14px;font-size:.88rem}
+.btn.alt{background:#21262d;color:var(--ink);border:1px solid #30363d;display:inline-flex;align-items:center;gap:6px}
+.btn.alt:hover{background:#30363d}
+.btn.follow{background:#238636;color:#fff;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.btn.follow:hover{background:#2ea043}
+.btn svg{width:14px;height:14px;fill:currentColor}
+.chk{color:var(--dim);font-size:.84rem}
+.btn{display:inline-block;min-height:44px;padding:11px 18px;background:var(--c);color:#0a0a0f;font:600 .98rem "Familjen Grotesk",system-ui,sans-serif;border:0;border-radius:6px;cursor:pointer;text-decoration:none;transition:transform .12s}
 .btn:active{transform:translate(2px,2px)}
 .btn:focus-visible{outline:2px solid #fff;outline-offset:2px}
-.sk{height:76px;list-style:none;background:var(--panel);border-left:6px solid #2a2735;animation:pulse 1.2s infinite alternate}
+.sk{height:150px;list-style:none;background:#0d1117;border:1px solid #30363d;border-radius:8px;animation:pulse 1.2s infinite alternate}
 @keyframes pulse{to{opacity:.45}}
-.err{background:var(--panel);padding:20px;display:grid;gap:10px;justify-items:start;border-left:6px solid #FF3366}
+.err{grid-column:1/-1;background:#0d1117;border:1px solid #30363d;border-left:5px solid #FF3366;border-radius:8px;padding:20px;display:grid;gap:10px;justify-items:start}
 dialog{position:fixed;inset:auto 0 0 0;margin:0 auto;width:min(560px,100%);max-height:82dvh;padding:0;border:0;border-top:5px solid var(--c);background:#0d0c14;color:var(--ink);overflow:auto;padding-bottom:env(safe-area-inset-bottom)}
 @media(min-width:700px){dialog{inset:0;margin:auto;height:fit-content;border:0;border-left:8px solid var(--c)}}
 dialog[open]{animation:up .28s cubic-bezier(.2,.8,.2,1)}
@@ -88,13 +91,13 @@ dialog::backdrop{background:rgba(0,0,0,.65)}
 
 <main>
   <div class="side">
-    <h1 id="logo" aria-label="my brojeck">my brojeck</h1>
-    <section class="profile" id="who" aria-live="polite"><p class="muted">Memuat profil…</p></section>
+    <h1 id="logo"><canvas role="img" aria-label="DevGit"></canvas></h1>
+    <section class="profile" id="who" aria-live="polite"><p class="muted">Loading profile…</p></section>
   </div>
   <section>
     <div class="bar">
-      <h2>Proyek</h2>
-      <input id="q" type="search" placeholder="Cari proyek" aria-label="Cari proyek" autocomplete="off">
+      <h2>Repositories <span id="cnt" class="muted"></span></h2>
+      <input id="q" type="search" placeholder="Find a repository" aria-label="Find a repository" autocomplete="off">
     </div>
     <ol id="list" style="list-style:none"><li class="sk"></li><li class="sk"></li><li class="sk"></li></ol>
   </section>
@@ -102,10 +105,10 @@ dialog::backdrop{background:rgba(0,0,0,.65)}
 
 <dialog id="sheet" aria-labelledby="stitle">
   <div class="sh">
-    <div class="sht"><h3 id="stitle"></h3><button id="sx" type="button">Tutup</button></div>
-    <label class="ver" id="sver">Versi <select id="ssel"></select></label>
+    <div class="sht"><h3 id="stitle"></h3><button id="sx" type="button">Close</button></div>
+    <label class="ver" id="sver">Version <select id="ssel"></select></label>
     <div id="sbody"></div>
-    <a id="sgh" target="_blank" rel="noopener">Lihat rilis di GitHub</a>
+    <a id="sgh" target="_blank" rel="noopener">View releases on GitHub</a>
   </div>
 </dialog>
 
@@ -117,10 +120,59 @@ const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;'
 const hash=s=>{let h=2166136261;for(const ch of s){h^=ch.charCodeAt(0);h=Math.imul(h,16777619)}return h>>>0};
 const color=n=>PAL[hash(n)%PAL.length];
 const fmt=n=>n>1048576?(n/1048576).toFixed(1)+' MB':Math.max(1,Math.round(n/1024))+' KB';
-const dt=d=>new Intl.DateTimeFormat('id-ID',{dateStyle:'medium'}).format(new Date(d));
+const dt=d=>new Intl.DateTimeFormat('en-US',{dateStyle:'medium'}).format(new Date(d));
 
-/* ---------- Logo: huruf jatuh ---------- */
-$('#logo').innerHTML=[...'my brojeck'].map((ch,i)=>`<span aria-hidden="true" style="animation-delay:${i*70}ms">${ch===' '?'&nbsp;':ch}</span>`).join('');
+/* ---------- Logo: colored boxes merge, turn white, spell DevGit ---------- */
+(()=>{
+  const cv=$('#logo canvas'),ctx=cv.getContext('2d');
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const rgb=PAL.map(h=>[1,3,5].map(i=>parseInt(h.substr(i,2),16)));
+  let boxes=[],W=0,H=0,B=6,t0=0,raf=0;
+  const ease=p=>1-Math.pow(1-p,3);
+  const F=s=>`700 ${s}px "Familjen Grotesk",system-ui,sans-serif`;
+  function init(){
+    const dpr=Math.min(devicePixelRatio||1,2);
+    W=Math.min(cv.parentElement.clientWidth||320,420);
+    const tmp=document.createElement('canvas'),tc=tmp.getContext('2d');
+    let fs=120;tc.font=F(fs);
+    while(tc.measureText('DevGit').width>W-4&&fs>30){fs-=2;tc.font=F(fs)}
+    H=Math.ceil(fs*1.1);B=fs>=80?6:5;
+    tmp.width=W;tmp.height=H;tc.font=F(fs);tc.fillStyle='#000';tc.fillText('DevGit',0,fs*.9);
+    const d=tc.getImageData(0,0,W,H).data;
+    cv.width=W*dpr;cv.height=H*dpr;cv.style.width=W+'px';cv.style.height=H+'px';ctx.setTransform(dpr,0,0,dpr,0,0);
+    boxes=[];
+    for(let y=0;y<H;y+=B)for(let x=0;x<W;x+=B){
+      const cx=Math.min(W-1,x+(B>>1)),cy=Math.min(H-1,y+(B>>1));
+      if(d[(cy*W+cx)*4+3]>110)boxes.push({tx:x,ty:y,sx:x+(Math.random()-.5)*160,sy:-20-Math.random()*H*1.6,ci:Math.random()*PAL.length|0,d:x/W*700+Math.random()*600,dur:800+Math.random()*500});
+    }
+  }
+  function frame(now){
+    const e=now-t0,sx=e/1000-2.8,ph=sx<0?-1:sx%7,wave=ph>=0&&ph<1.6?-50+ph/1.6*(W+100):-999;
+    ctx.clearRect(0,0,W,H);
+    for(const b of boxes){
+      const p=Math.min(1,(e-b.d)/b.dur);
+      if(p<=0)continue;
+      const x=b.sx+(b.tx-b.sx)*ease(p),y=b.sy+(b.ty-b.sy)*p*p;
+      let k=p<.75?0:(p-.75)/.25;
+      const dist=Math.abs(b.tx-wave);
+      if(p>=1&&dist<46)k=dist/46;
+      if(k>=1)ctx.fillStyle='#fff';
+      else{const c=rgb[b.ci];ctx.fillStyle=`rgb(${c[0]+(255-c[0])*k|0},${c[1]+(255-c[1])*k|0},${c[2]+(255-c[2])*k|0})`}
+      ctx.fillRect(x+1,y+1,B-1,B-1);
+    }
+  }
+  function loop(now){frame(now);raf=requestAnimationFrame(loop)}
+  function start(skip){
+    cancelAnimationFrame(raf);init();
+    t0=performance.now()-(skip||reduce?4000:0);
+    if(reduce){frame(t0+4000);return}
+    raf=requestAnimationFrame(loop);
+  }
+  let lastW=0;
+  const go=skip=>{lastW=Math.min(cv.parentElement.clientWidth||320,420);start(skip)};
+  Promise.race([document.fonts?document.fonts.load('700 100px "Familjen Grotesk"'):0,new Promise(r=>setTimeout(r,900))]).then(()=>go(false));
+  addEventListener('resize',()=>{if(Math.abs(Math.min(cv.parentElement.clientWidth||320,420)-lastW)>20)go(true)});
+})();
 
 /* ---------- GitHub ---------- */
 async function gh(path){
@@ -142,54 +194,66 @@ function mark(n){
   return `<svg class="mk" viewBox="0 0 31 31" fill="${color(n)}" aria-hidden="true">${r}</svg>`;
 }
 
+const STAR='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>';
+const PLUS='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M7.75 2a.75.75 0 0 1 .75.75V7h4.25a.75.75 0 0 1 0 1.5H8.5v4.25a.75.75 0 0 1-1.5 0V8.5H2.75a.75.75 0 0 1 0-1.5H7V2.75A.75.75 0 0 1 7.75 2Z"/></svg>';
+const LC={JavaScript:'#f1e05a',TypeScript:'#3178c6',Python:'#3572A5',HTML:'#e34c26',CSS:'#563d7c',Java:'#b07219',Kotlin:'#A97BFF','C':'#888888','C++':'#f34b7d','C#':'#178600',Go:'#00ADD8',Rust:'#dea584',Shell:'#89e051',Dart:'#00B4AB',GDScript:'#4f8fbf',Lua:'#4c4cff',PHP:'#4F5D95',Swift:'#F05138'};
+const ext=u=>/^https?:/.test(u)?u:'https://'+u;
+
 function renderWho(u){
-  const info=[u.location,u.company,u.blog&&`<a href="${esc(/^https?:/.test(u.blog)?u.blog:'https://'+u.blog)}" target="_blank" rel="noopener">${esc(u.blog)}</a>`,u.created_at&&'Bergabung '+dt(u.created_at)].filter(Boolean);
+  const info=[u.location&&esc(u.location),u.company&&esc(u.company),u.blog&&`<a href="${esc(ext(u.blog))}" target="_blank" rel="noopener">${esc(u.blog)}</a>`,u.created_at&&'Joined '+dt(u.created_at)].filter(Boolean);
   $('#who').innerHTML=`
     <div class="ava">
-      <img class="av" src="${esc(u.avatar_url)}&s=240" alt="Foto profil ${esc(u.login)}" width="108" height="108" onerror="this.style.visibility='hidden'">
-      <a class="gh" href="${esc(u.html_url)}" target="_blank" rel="noopener" aria-label="Buka profil GitHub ${esc(u.login)}"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+      <img class="av" src="${esc(u.avatar_url)}&s=240" alt="Profile photo of ${esc(u.login)}" width="108" height="108" onerror="this.style.visibility='hidden'">
+      <a class="gh" href="${esc(u.html_url)}" target="_blank" rel="noopener" aria-label="Open ${esc(u.login)} on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
     </div>
     <div><h2>${esc(u.name||u.login)}</h2><a href="${esc(u.html_url)}" target="_blank" rel="noopener" class="muted">@${esc(u.login)}</a></div>
     ${u.bio?`<p>${esc(u.bio)}</p>`:''}
-    <div class="st"><span><b>${u.public_repos}</b> proyek</span><span><b>${u.followers}</b> pengikut</span><span><b>${u.following}</b> mengikuti</span></div>
-    ${info.length?`<div class="info">${info.map(i=>`<span>${i.startsWith('<a')?i:esc(i)}</span>`).join('')}</div>`:''}`;
+    <div class="st"><span><b>${u.public_repos}</b> repositories</span><span><b>${u.followers}</b> followers</span><span><b>${u.following}</b> following</span></div>
+    ${info.length?`<div class="info">${info.map(i=>`<span>${i}</span>`).join('')}</div>`:''}
+    <a class="btn follow" href="${esc(u.html_url)}" target="_blank" rel="noopener">${PLUS} Follow @${esc(u.login)}</a>`;
 }
 
 const rels={};
+const queue=[];let running=0;
+function pump(){
+  while(running<3&&queue.length){running++;loadRel(queue.shift()).finally(()=>{running--;pump()})}
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){io.unobserve(e.target);queue.push(e.target);pump()}
+}),{rootMargin:'200px'});
+
+function card(r){
+  const c=color(r.name),lc=LC[r.language]||c;
+  return `<li class="card" style="--c:${c};--lc:${lc}" data-n="${esc(r.name)}" data-s="${esc((r.name+' '+(r.description||'')+' '+(r.language||'')).toLowerCase())}">
+    <div class="ct">${mark(r.name)}<a href="${esc(r.html_url)}" target="_blank" rel="noopener">${esc(r.name)}</a>${r.fork?'<span class="tag">Fork</span>':r.archived?'<span class="tag">Archived</span>':''}</div>
+    <p class="cd">${esc(r.description||'No description provided.')}</p>
+    <div class="cm">${r.language?`<span><i></i>${esc(r.language)}</span>`:''}<span>${r.stargazers_count} stars</span><span>${r.forks_count} forks</span><span>Updated ${dt(r.pushed_at||r.updated_at)}</span></div>
+    <div class="act"><a class="btn alt" href="${esc(r.html_url)}" target="_blank" rel="noopener" aria-label="Star ${esc(r.name)} on GitHub">${STAR} Star</a><span class="rel chk">Checking releases…</span></div>
+  </li>`;
+}
+
 function renderList(rs){
-  if(!rs.length){$('#list').innerHTML='<li class="err" style="list-style:none"><p>Belum ada proyek publik di akun ini.</p></li>';return}
-  $('#list').innerHTML=rs.map(r=>`
-    <li class="row" style="--c:${color(r.name)}" data-n="${esc(r.name)}" data-s="${esc((r.name+' '+(r.description||'')+' '+(r.language||'')).toLowerCase())}">
-      <button class="head" type="button" aria-expanded="false">
-        ${mark(r.name)}
-        <span class="nm">${esc(r.name)}</span>
-        ${r.description?`<span class="ds">${esc(r.description)}</span>`:''}
-        <span class="meta">${r.language?`<span>${esc(r.language)}</span>`:''}<span>${r.stargazers_count} bintang</span>${r.fork?'<span>fork</span>':''}<span>diperbarui ${dt(r.pushed_at||r.updated_at)}</span></span>
-      </button>
-      <div class="body"><div><div class="in">
-        ${(r.topics&&r.topics.length)?`<span class="muted">${r.topics.map(esc).join(', ')}</span>`:''}
-        <div class="links"><a href="${esc(r.html_url)}" target="_blank" rel="noopener">Buka di GitHub</a>${r.homepage?`<a href="${esc(/^https?:/.test(r.homepage)?r.homepage:'https://'+r.homepage)}" target="_blank" rel="noopener">Situs proyek</a>`:''}</div>
-        <div class="rel muted">Memeriksa rilis…</div>
-      </div></div></div>
-    </li>`).join('');
+  $('#cnt').textContent=rs.length?'('+rs.length+')':'';
+  if(!rs.length){$('#list').innerHTML='<li class="err"><p>No public repositories yet.</p></li>';return}
   window._repos=Object.fromEntries(rs.map(r=>[r.name,r]));
+  $('#list').innerHTML=rs.map(card).join('');
+  document.querySelectorAll('.card').forEach(li=>io.observe(li));
 }
 
 async function loadRel(li){
   const n=li.dataset.n,box=li.querySelector('.rel');
   try{
-    const all=await gh(`/repos/${USER}/${encodeURIComponent(n)}/releases?per_page=15`);
-    const list=all.filter(r=>!r.draft);rels[n]=list;
-    if(!list.length){box.textContent='Belum ada rilis untuk proyek ini.';return}
-    const a=list[0],cnt=(a.assets||[]).length;
-    box.className='rel';
-    box.innerHTML=`<p class="muted" style="margin-bottom:10px">Rilis terbaru: ${esc(a.name||a.tag_name)}, ${dt(a.published_at||a.created_at)}</p><button class="btn pick" type="button">${cnt?`Pilih file unduhan (${cnt})`:'Lihat rilis'}</button>`;
+    const list=(await gh(`/repos/${USER}/${encodeURIComponent(n)}/releases?per_page=15`)).filter(r=>!r.draft);
+    rels[n]=list;
+    if(!list.length){box.remove();return}
+    const cnt=(list[0].assets||[]).length;
+    box.outerHTML=`<button class="btn pick" type="button">Download${cnt?' ('+cnt+')':''}</button>`;
   }catch(e){
-    box.innerHTML=`Rilis belum bisa dimuat. <a href="https://github.com/${USER}/${esc(n)}/releases" target="_blank" rel="noopener" style="color:inherit">Buka halaman rilis</a>`;
+    box.outerHTML=`<a class="btn alt" href="${esc(window._repos[n].html_url)}/releases" target="_blank" rel="noopener">Releases</a>`;
   }
 }
 
-/* ---------- Sheet pilih file ---------- */
+/* ---------- File picker sheet ---------- */
 const sheet=$('#sheet');
 function openSheet(n){
   const list=rels[n],repo=window._repos[n];
@@ -197,11 +261,11 @@ function openSheet(n){
   $('#stitle').textContent=n;
   $('#sgh').href=repo.html_url+'/releases';
   const sel=$('#ssel');
-  sel.innerHTML=list.map((r,k)=>`<option value="${k}">${esc(r.name||r.tag_name)}${r.prerelease?' (pra-rilis)':''}</option>`).join('');
+  sel.innerHTML=list.map((r,k)=>`<option value="${k}">${esc(r.name||r.tag_name)}${r.prerelease?' (pre-release)':''}</option>`).join('');
   $('#sver').style.display=list.length>1?'flex':'none';
   const draw=()=>{
     const r=list[sel.value],as=r.assets||[];
-    $('#sbody').innerHTML=as.length?as.map(a=>`<a class="file" href="${esc(a.browser_download_url)}"><b>${esc(a.name)}</b><span>${fmt(a.size)}, ${a.download_count} unduhan</span></a>`).join(''):'<p class="muted">Rilis ini tidak punya file terlampir. Buka di GitHub untuk melihat kode sumbernya.</p>';
+    $('#sbody').innerHTML=as.length?as.map(a=>`<a class="file" href="${esc(a.browser_download_url)}"><b>${esc(a.name)}</b><span>${fmt(a.size)}, ${a.download_count} downloads</span></a>`).join(''):'<p class="muted">This release has no attached files. Open it on GitHub to get the source code.</p>';
   };
   sel.onchange=draw;draw();
   sheet.showModal();
@@ -209,32 +273,25 @@ function openSheet(n){
 $('#sx').onclick=()=>sheet.close();
 sheet.addEventListener('click',e=>{if(e.target===sheet)sheet.close()});
 
-/* ---------- Interaksi daftar ---------- */
 $('#list').addEventListener('click',e=>{
   const pick=e.target.closest('.pick');
-  if(pick){openSheet(pick.closest('.row').dataset.n);return}
-  const head=e.target.closest('.head');
-  if(!head)return;
-  const li=head.parentElement,open=li.classList.toggle('open');
-  head.setAttribute('aria-expanded',open);
-  if(open&&!li.dataset.loaded){li.dataset.loaded=1;loadRel(li)}
+  if(pick)openSheet(pick.closest('.card').dataset.n);
 });
 $('#q').addEventListener('input',e=>{
   const v=e.target.value.trim().toLowerCase();
-  document.querySelectorAll('.row').forEach(li=>li.hidden=!!v&&!li.dataset.s.includes(v));
+  document.querySelectorAll('.card').forEach(li=>li.hidden=!!v&&!li.dataset.s.includes(v));
 });
 
 async function load(){
-  $('#who').innerHTML='<p class="muted">Memuat profil…</p>';
-  $('#list').innerHTML='<li class="sk"></li><li class="sk"></li><li class="sk"></li>';
+  $('#who').innerHTML='<p class="muted">Loading profile…</p>';
+  $('#list').innerHTML='<li class="sk"></li><li class="sk"></li><li class="sk"></li><li class="sk"></li>';
   try{
     const [u,rs]=await Promise.all([gh(`/users/${USER}`),gh(`/users/${USER}/repos?per_page=100&sort=pushed`)]);
     renderWho(u);renderList(rs);
   }catch(e){
-    const why=(e.status===403||e.status===429)?'Batas permintaan GitHub sedang tercapai. Tunggu beberapa menit lalu coba lagi.':e.status===404?'Akun GitHub '+USER+' tidak ditemukan.':'Tidak bisa terhubung ke GitHub. Periksa internet, lalu coba lagi.';
-    const html=`<p><b>Data GitHub belum bisa dimuat.</b></p><p class="muted">${why}</p><button class="btn" style="--c:#00CCFF" type="button" id="retry">Coba lagi</button><a href="https://github.com/${USER}" target="_blank" rel="noopener" style="color:inherit">Buka github.com/${USER}</a>`;
-    $('#who').innerHTML='<p class="muted">Profil belum termuat.</p>';
-    $('#list').innerHTML=`<li class="err" style="list-style:none">${html}</li>`;
+    const why=(e.status===403||e.status===429)?'GitHub’s request limit was reached. Wait a few minutes and try again.':e.status===404?'The GitHub account '+USER+' wasn’t found.':'Couldn’t reach GitHub. Check your connection and try again.';
+    $('#who').innerHTML='<p class="muted">Profile not loaded.</p>';
+    $('#list').innerHTML=`<li class="err"><p><b>GitHub data couldn’t be loaded.</b></p><p class="muted">${why}</p><button class="btn" style="--c:#00CCFF" type="button" id="retry">Try again</button><a href="https://github.com/${USER}" target="_blank" rel="noopener" style="color:inherit">Open github.com/${USER}</a></li>`;
     $('#retry').onclick=load;
   }
 }
